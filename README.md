@@ -71,6 +71,20 @@ export TINKER_API_KEY=...
 - If not, it falls back to a plain role-tagged prompt format.
 - Current behavior is non-streaming (`num_samples=1`).
 
+
+## Smoke test against a real checkpoint
+
+Use the helper script after installing `tinker` in a Python 3.11+ environment:
+
+```bash
+python scripts/smoke_test_tinker_pipe.py \
+  --checkpoint tinker://05a8613d-3de1-5206-a321-ddc55d231ee3:train:0/sampler_weights/final \
+  --api-key "$TINKER_API_KEY" \
+  --prompt "Reply with exactly: smoke_ok"
+```
+
+If the key is valid, you should receive a model response.
+
 ## Local tests
 
 ```bash
