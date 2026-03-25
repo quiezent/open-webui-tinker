@@ -13,7 +13,7 @@ If you post-train models like **GPT-OSS-20B** and **GPT-OSS-120B** in Tinker, th
 
 ## Requirements
 
-Inside the Open WebUI runtime environment:
+Inside the Open WebUI runtime environment (Python **3.11+**):
 
 ```bash
 pip install tinker
@@ -81,3 +81,10 @@ python -m unittest -v tests/test_tinker_native_pipeline.py
 
 - Tinker docs (`SamplingClient`, installation, training/sampling guide).
 - Open WebUI docs (0.5 migration notes for function signatures).
+
+
+## Troubleshooting
+
+- If you see `api_key must start with the 'tml-' prefix`, verify you pasted the correct Tinker key.
+- If you see `No module named tinker`, install the SDK in the same Python environment used by Open WebUI.
+- If your host has Python 3.10, use a Python 3.11 runtime for the Open WebUI container/process.

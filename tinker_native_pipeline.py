@@ -81,6 +81,16 @@ class Pipe:
             return self._service_client
 
         tinker = self._load_tinker()
+        api_key = self.valves.TINKER_API_KEY or os.getenv("TINKER_API_KEY", "")
+
+        if api_key:
+            try:
+                self._service_client = tinker.ServiceClient(api_key=api_key)
+                return self._service_client
+            except TypeError:
+                # Backward compatibility for SDKs that only read environment variables.
+                os.environ["TINKER_API_KEY"] = api_key
+
         self._service_client = tinker.ServiceClient()
         return self._service_client
 
